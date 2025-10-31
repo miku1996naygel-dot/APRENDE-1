@@ -7,12 +7,14 @@ interface ButtonProps {
   onClick: () => void;
   className?: string;
   variant?: 'primary' | 'secondary' | 'icon';
+  disabled?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, onClick, className = '', variant = 'primary' }) => {
+export const Button: React.FC<ButtonProps> = ({ children, onClick, className = '', variant = 'primary', disabled }) => {
     const { isHighContrast, fontSize } = useAccessibility();
 
-    const baseClasses = `font-bold rounded-full transition-transform duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4`;
+    // Add disabled state classes for styling
+    const baseClasses = `font-bold rounded-full transition-transform duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 disabled:opacity-50 disabled:cursor-not-allowed`;
     
     let variantClasses = '';
     switch (variant) {
@@ -38,6 +40,7 @@ export const Button: React.FC<ButtonProps> = ({ children, onClick, className = '
         <button
             onClick={onClick}
             className={`${baseClasses} ${variantClasses} ${fontSize} ${className}`}
+            disabled={disabled}
         >
             {children}
         </button>

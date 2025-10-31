@@ -54,7 +54,8 @@ export const TutorialsList: React.FC<TutorialsListProps> = ({ setScreen, setSele
           <Card key={tutorial.id} onClick={() => handleSelectTutorial(tutorial)}>
             <div className="flex flex-col items-center text-center p-4">
                 <div className={`mb-4 ${iconColor}`}>
-                    {React.cloneElement(tutorial.icon as React.ReactElement, { className: "w-12 h-12" })}
+                    {/* Fix: Remove type assertion as the type is now correctly defined in types.ts */}
+                    {React.cloneElement(tutorial.icon, { className: "w-12 h-12" })}
                 </div>
               <h3 className={`text-xl font-bold ${titleColor}`}>{tutorial.title}</h3>
             </div>

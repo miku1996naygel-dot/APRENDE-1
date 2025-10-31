@@ -1,5 +1,5 @@
 
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement } from 'react';
 
 export interface Tutorial {
   id: string;
@@ -7,7 +7,7 @@ export interface Tutorial {
   title: string;
   content: string[];
   videoUrl?: string; 
-  icon: ReactNode;
+  icon: ReactElement<{ className?: string }>;
 }
 
 export interface DiagnosticQuestion {
